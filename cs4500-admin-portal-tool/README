@@ -1,0 +1,27 @@
+admin portal tool project for cs4500
+
+I'll go over the proper usage in detail
+
+./main.py [port] [host] [db_port] [user] [pw] [db]
+
+port: the port you want the server to run on
+host: the host of the MySQL DB
+db_port: the port to use for connecting to the MySQL DB. if the DB is local, this argument is still required, but will not be used
+user: the username for MySQL DB access
+pw: the plaintext password for the MySQL DB user
+db: the name of the MySQL database that the server will hook to
+
+example: "./main.py 10003 localhost 3306 user password my_mysql_database_name
+
+API Calls:
+ - example.com/[table] : responds wth JSON serialized data representing the entire table in the DB (this is mostly for development and debugging purposes. use sparingly)
+ - example.com/[table]/[column] : responds with JSON serialized data representing the value specified column's value for each row of the table
+ - example.com/[table]/[column]/[value] : responds with JSON serialized data representing all rows with the specified "value" in the specified column
+
+Examples of how this works can be found in the "tests.sh" file, which is an executable shell script that runs tests on a known DB with expected responses.
+
+Usage for this test script:
+./test.sh
+
+All source code is extensively documented, so nothing should be unclear.
+
